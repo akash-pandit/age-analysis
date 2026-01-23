@@ -1,7 +1,7 @@
 # tells git what files to ignore
 
 # data files
-data
+data/*
 !data/README.md
 # prepend filename with ! to tell git to explicitly include it
 
