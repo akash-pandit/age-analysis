@@ -12,7 +12,7 @@ An analysis studying aged mouse hematopoietic stem cells and megakaryocyte proge
 
 Hematopoietic Stem Cells (HSCs) are the source of our blood cells in both humans and mice. With a mouse model, [the Forsberg lab at UC Santa Cruz has shown](https://doi.org/10.1016/j.cell.2024.04.018) that as a mouse grows old, their HSCs begin to differentiate into a different kind Megakaryocyte Progenitors (the cells that govern platelet production), denoted 'non-canonical MKPs' or 'ncMKPs', as opposed to normally-behaving or 'canonical' MKPs. Non-canonical create higher amounts of platelets, and those platelets are also more prone to clotting (described as 'enhanced thrombosis' in the literature).
 
-![The graphical abstract for Poscablo 2024](/figures/poscablo24-graphical-abstract.jpg)
+![The graphical abstract for Poscablo 2024](/assets/poscablo24-graphical-abstract.jpg)
 
 **The combination of the weakening that comes with age with more aggressive, more likely clotting paints a concerning picture for *any* organism that may experience this, and can lead to an increase in heart disease.**
 
