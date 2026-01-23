@@ -1,10 +1,24 @@
-# Project Template
+# HSC/MKP Age Analysis
 
-A template for bioinformatics workflows for the Forsberg lab. Replace this with a short description of whatever analysis is going on here. Created by Akash Pandit.
+An analysis studying aged mouse hematopoietic stem cells and megakaryocyte progenitors in an attempt to identify reasons for age-induced non-canonical platelet generation.
 
-- [Project Template](#project-template)
+- [HSC/MKP Age Analysis](#hscmkp-age-analysis)
+    - [Background](#background)
+    - [Objective](#objective)
   - [Prerequisites](#prerequisites)
   - [Setup](#setup)
+
+### Background
+
+Hematopoietic Stem Cells (HSCs) are the source of our blood cells in both humans and mice. With a mouse model, [the Forsberg lab at UC Santa Cruz has shown](https://doi.org/10.1016/j.cell.2024.04.018) that as a mouse grows old, their HSCs begin to differentiate into a different kind Megakaryocyte Progenitors (the cells that govern platelet production), denoted 'non-canonical MKPs' or 'ncMKPs', as opposed to normally-behaving or 'canonical' MKPs. Non-canonical create higher amounts of platelets, and those platelets are also more prone to clotting (described as 'enhanced thrombosis' in the literature).
+
+![The graphical abstract for Poscablo 2024](/figures/poscablo24-graphical-abstract.jpg)
+
+**The combination of the weakening that comes with age with more aggressive, more likely clotting paints a concerning picture for *any* organism that may experience this, and can lead to an increase in heart disease.**
+
+### Objective
+
+This analysis hypothesizes that there is a transcriptomic or proteomic cause for ncMKP production and aims to find candidates for that cause.
 
 ## Prerequisites
 
@@ -20,8 +34,8 @@ Basic BASH shell proficiency is assumed. Mac users, this is built-in to your ter
 
 To clone (download) this repository's contents, navigate to your parent directory of choice and run:
 ```bash
-git clone https://github.com/akash-pandit/bnfo-analysis-template
-cd bnfo-analysis-template 
+git clone https://github.com/akash-pandit/age-analysis
+cd age-analysis
 ```
 
 To download all python dependencies and configure your environment, run:
@@ -36,5 +50,5 @@ uv run jupyter lab
 
 **For VSCode Users**: VSCode sometimes struggles to recognize a UV environment. To force VSCode's internal jupyter server to recognize a uv python environment, run the following line:
 ```bash
-uv run python -m ipykernel install --user --name internal_env_name --display-name "Env Name"
+uv run python -m ipykernel install --user --name hsc-mkp-age-analysis --display-name "Age Analysis"
 ```
