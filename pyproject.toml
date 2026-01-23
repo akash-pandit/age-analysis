@@ -8,5 +8,6 @@ dependencies = [
     "ipykernel>=7.1.0",
     "jupyter-core>=5.9.1",
     "jupyterlab>=4.5.2",
+    "pyrootutils>=1.0.4",
     "scanpy>=1.11.5",
 ]
