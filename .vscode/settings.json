@@ -1,4 +1,4 @@
 {
     // vscode *should* automatically detect the uv kernel for kernel selection in notebook mode.
-    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python3",
 }
