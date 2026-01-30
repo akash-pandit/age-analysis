@@ -7,6 +7,29 @@ resolution-markers = [
 ]
 
 [[package]]
+name = "age-analysis"
+version = "0.1.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "ipykernel" },
+    { name = "ipywidgets" },
+    { name = "jupyter-core" },
+    { name = "jupyterlab" },
+    { name = "pyrootutils" },
+    { name = "scanpy" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "ipykernel", specifier = ">=7.1.0" },
+    { name = "ipywidgets", specifier = ">=8.1.8" },
+    { name = "jupyter-core", specifier = ">=5.9.1" },
+    { name = "jupyterlab", specifier = ">=4.5.2" },
+    { name = "pyrootutils", specifier = ">=1.0.4" },
+    { name = "scanpy", specifier = ">=1.11.5" },
+]
+
+[[package]]
 name = "anndata"
 version = "0.12.7"
 source = { registry = "https://pypi.org/simple" }
@@ -177,29 +200,6 @@ wheels = [
 [package.optional-dependencies]
 css = [
     { name = "tinycss2" },
-]
-
-[[package]]
-name = "bnfo-analysis-template"
-version = "0.1.0"
-source = { virtual = "." }
-dependencies = [
-    { name = "ipykernel" },
-    { name = "ipywidgets" },
-    { name = "jupyter-core" },
-    { name = "jupyterlab" },
-    { name = "pyrootutils" },
-    { name = "scanpy" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "ipykernel", specifier = ">=7.1.0" },
-    { name = "ipywidgets", specifier = ">=8.1.8" },
-    { name = "jupyter-core", specifier = ">=5.9.1" },
-    { name = "jupyterlab", specifier = ">=4.5.2" },
-    { name = "pyrootutils", specifier = ">=1.0.4" },
-    { name = "scanpy", specifier = ">=1.11.5" },
 ]
 
 [[package]]
