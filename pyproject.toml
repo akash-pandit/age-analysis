@@ -1,5 +1,5 @@
 [project]
-name = "bnfo-analysis-template"
+name = "age-analysis"
 version = "0.1.0"
 description = "My template for bioinformatics analyses in the forsberg lab"
 readme = "README.md"
