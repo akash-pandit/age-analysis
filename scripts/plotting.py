@@ -49,7 +49,7 @@ def plot_dual_celltypes(
         else "right margin"
     )
 
-    fig, axs = plt.subplots(nrows=1, ncols=2, constrained_layout=True, figsize=(14, 4))
+    fig, axs = plt.subplots(nrows=1, ncols=2, constrained_layout=True, figsize=(14, 5))
     fig.suptitle(t=figtitle)
 
     axs[0] = embedding(

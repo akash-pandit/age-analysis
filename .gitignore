@@ -5,4 +5,4 @@ data/*
 !data/README.md
 # prepend filename with ! to tell git to explicitly include it
 
-# 
+scripts/__pycache__/*
