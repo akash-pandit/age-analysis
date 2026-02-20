@@ -7,6 +7,9 @@ from anndata import AnnData
 from scanpy import pl
 from pathlib import Path
 
+from numpy import float64, ndarray
+from pandas import DataFrame
+
 
 def setup_validate_paths(required_paths: list[Path], output_dirs: list[Path]):
     """
@@ -111,3 +114,73 @@ def plot_batches(adata: AnnData, batch_col: str, suptitle: str = "Treatment") ->
             title=f"Batch: {batch}",
             legend_loc="best",
         )
+
+
+def harmony_integrate(
+    adata: AnnData,
+    key: str,
+    *,
+    basis: str = "X_pca",
+    adjusted_basis: str = "X_pca_harmony",
+    **kwargs,
+):
+    """
+    A hotfix for scanpy.external.pp.harmony_integrate() with near identical
+    implementation. scanpy's harmony_integrate() implementation transposes
+    the adata object for compatibility with older harmony versions, but this
+    breaks with harmonypy>=0.1.0.
+
+    Issue + fix is documented here: https://github.com/scverse/scanpy/issues/3940
+
+    Use harmonypy :cite:p:`Korsunsky2019` to integrate different experiments.
+
+    Harmony :cite:p:`Korsunsky2019` is an algorithm for integrating single-cell
+    data from multiple experiments. This function uses the python
+    port of Harmony, ``harmonypy``, to integrate single-cell data
+    stored in an AnnData object. As Harmony works by adjusting the
+    principal components, this function should be run after performing
+    PCA but before computing the neighbor graph, as illustrated in the
+    example below.
+
+    Parameters
+    ----------
+    adata
+        The annotated data matrix.
+    key
+        The name of the column in ``adata.obs`` that differentiates
+        among experiments/batches. To integrate over two or more covariates,
+        you can pass multiple column names as a list. See ``vars_use``
+        parameter of the ``harmonypy`` package for more details.
+    basis
+        The name of the field in ``adata.obsm`` where the PCA table is
+        stored. Defaults to ``'X_pca'``, which is the default for
+        ``sc.pp.pca()``.
+    adjusted_basis
+        The name of the field in ``adata.obsm`` where the adjusted PCA
+        table will be stored after running this function. Defaults to
+        ``X_pca_harmony``.
+    kwargs
+        Any additional arguments will be passed to
+        ``harmonypy.run_harmony()``.
+
+    Returns
+    -------
+    Updates adata with the field ``adata.obsm[obsm_out_field]``,
+    containing principal components adjusted by Harmony such that
+    different experiments are integrated.
+    """
+    import harmonypy
+
+    x = adata.obsm[basis].astype(float64)
+
+    assert isinstance(x, ndarray) and isinstance(
+        adata.obs, DataFrame
+    )  # added for type safety
+
+    harmony_out = harmonypy.run_harmony(
+        data_mat=x, meta_data=adata.obs, vars_use=key, **kwargs
+    )
+
+    adata.obsm[adjusted_basis] = (
+        harmony_out.Z_corr
+    )  # fix: ..out.Z_corr.T -> ..out.Z_corr
