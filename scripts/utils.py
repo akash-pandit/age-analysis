@@ -11,7 +11,7 @@ from numpy import float64, ndarray
 from pandas import DataFrame
 
 
-def setup_validate_paths(required_paths: list[Path], output_dirs: list[Path]):
+def setup_validate_paths(required_paths: list[Path], output_dirs: list[Path]) -> None:
     """
     Validates existance of paths in `required_paths` and creates directories in `output_dirs`
 
@@ -41,7 +41,7 @@ def plot_dual_celltypes(
     basis1: str = "umap",
     basis2: str = "umap",
     savepath: str | Path | None = None,
-):
+) -> None:
     """
     Plot embeddings for two AnnData objects. Shared labels are condensed to one legend.
 
@@ -123,7 +123,7 @@ def harmony_integrate(
     basis: str = "X_pca",
     adjusted_basis: str = "X_pca_harmony",
     **kwargs,
-):
+) -> None:
     """
     A hotfix for scanpy.external.pp.harmony_integrate() with near identical
     implementation. scanpy's harmony_integrate() implementation transposes
